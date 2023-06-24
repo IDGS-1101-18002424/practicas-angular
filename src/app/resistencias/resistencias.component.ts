@@ -23,10 +23,10 @@ export class ResistenciasComponent {
     const mult = Math.pow(10, banda3V);
     this.valorR = (banda1V * 10 + banda2V) * mult;
 
-    if (this.tolerancia === 'Dorado') {
+    if (this.tolerancia === 'gold') {
       this.valorMax = this.valorR * 1.05;
       this.valorMin = this.valorR * 0.95;
-    } else if (this.tolerancia === 'Plata') {
+    } else if (this.tolerancia === 'silver') {
       this.valorMax = this.valorR * 1.1;
       this.valorMin = this.valorR * 0.9;
     }
