@@ -1,0 +1,38 @@
+<h1>Medición de distancia entre dos puntos</h1>
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <h3>Punto 1</h3>
+            <br>
+            <label>X:</label>
+            <mat-form-field appearance="fill">
+                <input matInput type="number" [(ngModel)]="point1.x" placeholder="Coordenada X">
+            </mat-form-field>
+            <br>
+            <label>Y:</label>
+            <mat-form-field appearance="fill">
+                <input matInput type="number" [(ngModel)]="point1.y" placeholder="Coordenada Y">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <h3>Punto 2</h3>
+            <br>
+            <label>X:</label>
+            <mat-form-field appearance="fill">
+                <input matInput type="number" [(ngModel)]="point2.x" placeholder="Coordenada X">
+            </mat-form-field>
+            <br>
+            <label>Y:</label>
+            <mat-form-field appearance="fill">
+                <input matInput type="number" [(ngModel)]="point2.y" placeholder="Coordenada Y">
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="calculateDistance()">Calcular distancia</button>
+        <hr>
+        <div class="col">
+            <div *ngIf="distance !== 0">
+                <h1>La distancia entre los puntos es: {{ distance }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
