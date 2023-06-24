@@ -1,1 +1,65 @@
-<p>resistencias works!</p>
+<h1>Calculadora de Resistencias</h1>
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="banda1">Banda 1:</label>
+                <select id="banda1" class="form-control" [(ngModel)]="banda1">
+                    <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="banda2">Banda 2:</label>
+                <select id="banda2" class="form-control" [(ngModel)]="banda2">
+                    <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="banda3">Banda 3:</label>
+                <select id="banda3" class="form-control" [(ngModel)]="banda3">
+                    <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="tolerancia">Tolerancia:</label>
+                <select id="tolerancia" class="form-control" [(ngModel)]="tolerancia">
+                    <option *ngFor="let tol of toleranciaL" [value]="tol">{{ tol }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" (click)="calcularResistencia()">Calcular</button>
+        </div>
+        <hr>
+        <div class="col">
+            <div *ngIf="valorR !== undefined" class="mt-4">
+                <h1>Valor de la resistencia: {{ valorR }} &#8486;</h1>
+                <h1>Rango de tolerancia: Min:{{ valorMin }} &#8486; - Max:{{ valorMax }} &#8486;</h1>
+            </div>
+        </div>
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Banda 1</th>
+                    <th>Banda 2</th>
+                    <th>Banda 3</th>
+                    <th>Tolerancia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td [style.background-color]="banda1">{{ banda1 }}</td>
+                    <td [style.background-color]="banda2">{{ banda2 }}</td>
+                    <td [style.background-color]="banda3">{{ banda3 }}</td>
+                    <td [style.background-color]="tolerancia">{{ tolerancia }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
