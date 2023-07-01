@@ -1,19 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" routerLink="">IDGS - 901</a>
-    <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand">IDGS - 901</a>
+    <button class="navbar-toggler" data-target="#" data-toggle="collapse" aria-colcount="my-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="my-nav">
+    <div id="my-nav" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="home">
+                    <!--fa-icon [ico]="myIcon"></fa-icon-->Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/rutas" routerLinkActive="active">Rutas</a>
+                <a class="nav-link" routerLink="resistencias">Resistencias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/distancia-dos-puntos" routerLinkActive="active">Distancia Dos Puntos</a>
+                <a class="nav-link" routerLink="distancia-dos-puntos">Distancia 2 Puntos</a>
             </li>
+
         </ul>
     </div>
 </nav>

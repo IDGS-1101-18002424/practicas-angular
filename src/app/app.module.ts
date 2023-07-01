@@ -7,8 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MenuComponent } from './grupos/menu/menu.component';
 import { DistanciaComponent } from './distancia/distancia.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './grupos/home/home.component';
+import { AppRoutingModule } from './app.routing module';
+import { HomeComponent } from './home/home.component';
 import { ResistenciasComponent } from './resistencias/resistencias.component';
 
 
