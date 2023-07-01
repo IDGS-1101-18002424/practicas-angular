@@ -10,6 +10,7 @@ import { DistanciaComponent } from './distancia/distancia.component';
 import { AppRoutingModule } from './app.routing module';
 import { HomeComponent } from './home/home.component';
 import { ResistenciasComponent } from './resistencias/resistencias.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 
 
@@ -24,6 +25,7 @@ import { ResistenciasComponent } from './resistencias/resistencias.component';
     DistanciaComponent,
     HomeComponent,
     ResistenciasComponent,
+    PedidoComponent,
   ],
   imports: [
     BrowserModule,

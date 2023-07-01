@@ -1,0 +1,75 @@
+<h1>Pedido</h1>
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <h2>Datos Cliente:</h2>
+            <div class="form-group">
+                <label>Nombre completo:</label>
+                <input type="text" class="form-control" [(ngModel)]="nombreCompleto">
+            </div>
+            <div class="form-group">
+                <label>Dirección:</label>
+                <input type="text" class="form-control" [(ngModel)]="direccion">
+            </div>
+            <div class="form-group">
+                <label>Teléfono:</label>
+                <input type="text" class="form-control" [(ngModel)]="telefono">
+            </div>
+            <div class="form-group">
+                <label>Fecha de compra:</label>
+                <input type="date" class="form-control" [(ngModel)]="fechaCompra">
+            </div>
+            <hr>
+            <h2>Pizzas:</h2>
+            <div class="form-group">
+                <label>Tamaño:</label>
+                <select class="form-control" [(ngModel)]="tamanio">
+                    <option value="Pequeña">Pequeña</option>
+                    <option value="Mediana">Mediana</option>
+                    <option value="Grande">Grande</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Ingredientes:</label>
+                <select class="form-control" [(ngModel)]="ingredientes">
+                    <option value="Jamon">Jamon</option>
+                    <option value="Piña">Piña</option>
+                    <option value="Champiñones">Champiñones</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Número de pizzas:</label>
+                <input type="number" class="form-control" [(ngModel)]="numeroPizzas">
+            </div>
+            <button class="btn btn-primary" (click)="agregarPizza()">Agregar</button>
+        </div>
+        <div class="col">
+            <h2>Detalle del pedido:</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tamaño:</th>
+                        <th>Ingredientes:</th>
+                        <th>Número de pizzas:</th>
+                        <th>Subtotal:</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pizza of detallePedido">
+                        <td>{{ pizza.tamanio }}</td>
+                        <td>{{ pizza.ingredientes }}</td>
+                        <td>{{ pizza.numeroPizzas }}</td>
+                        <td>{{ pizza.subtotal }}</td>
+                        <td><button class="btn btn-danger" (click)="quitarPizza(pizza)">Quitar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-success" (click)="finalizarPedido()">Finalizar pedido</button>
+            <div *ngIf="mostrarConfirmacion">
+                <p>El costo total del pedido es: {{ costoTotal }}</p>
+                <label>¿Estás de acuerdo?</label>
+                <button class="btn btn-primary" (click)="aceptarPedido()">Sí</button>
+                <button class="btn btn-danger" (click)="editarPedido()">No</button>
+            </div>
+        </div>
