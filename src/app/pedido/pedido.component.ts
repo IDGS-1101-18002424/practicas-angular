@@ -37,19 +37,27 @@ export class PedidoComponent {
     { nombre: 'Champiñones', seleccionado: false },
     { nombre: 'Pepperoni', seleccionado: false },
     { nombre: 'Salami', seleccionado: false },
-    
+
   ];
   pedidoEnviado: boolean = false;
 
 
-  agregarPizza() {
+  /**
+   * Agrega una pizza al detalle del pedido.
+   */
+  agregarPizza(): void {
+    // Obtiene los ingredientes seleccionados
     const ingredientesSeleccionados = this.ingredientesDisponibles
       .filter(ingrediente => ingrediente.seleccionado)
       .map(ingrediente => ingrediente.nombre);
-  
+
+    // Calcula el costo adicional de los ingredientes seleccionados
     const costoIngredientes = ingredientesSeleccionados.length * 10;
+
+    // Calcula el subtotal de la pizza
     const subtotal = this.calcularSubtotal(this.tamanio, this.numeroPizzas, costoIngredientes);
-    
+
+    // Crea un objeto pizza con los datos del pedido
     const pizza = {
       nombreCompleto: this.nombreCompleto,
       tamanio: this.tamanio,
@@ -57,12 +65,19 @@ export class PedidoComponent {
       numeroPizzas: this.numeroPizzas,
       subtotal: subtotal
     };
-    
+
+    // Agrega la pizza al detalle del pedido
     this.detallePedido.push(pizza);
+
+    // Calcula el costo total del pedido
     this.calcularCostoTotal();
   }
 
-  quitarPizza(pizza: any) {
+  /**
+   * Quita una pizza del detalle del pedido.
+   * @param pizza La pizza a quitar.
+   */
+  quitarPizza(pizza: any): void {
     const index = this.detallePedido.indexOf(pizza);
     if (index !== -1) {
       this.detallePedido.splice(index, 1);
@@ -70,27 +85,45 @@ export class PedidoComponent {
     }
   }
 
+  /**
+   * Calcula el subtotal de una pizza.
+   * @param tamanio El tamaño de la pizza.
+   * @param numeroPizzas El número de pizzas.
+   * @param costoIngredientes El costo adicional de los ingredientes seleccionados.
+   * @returns El subtotal de la pizza.
+   */
   calcularSubtotal(tamanio: string, numeroPizzas: number, costoIngredientes: number): number {
     const precio = this.precios[tamanio];
     const costoTotal = (precio + costoIngredientes) * numeroPizzas;
     return costoTotal;
   }
-  
-  finalizarPedido() {
+
+  /**
+   * Finaliza el pedido y muestra la confirmación al usuario.
+   */
+  finalizarPedido(): void {
     this.calcularCostoTotal();
     this.mostrarConfirmacion = true;
   }
 
-  aceptarPedido() {
+  /**
+   * Acepta el pedido y muestra la confirmación de envío.
+   */
+  aceptarPedido(): void {
     this.pedidoEnviado = true;
   }
-  
 
-  editarPedido() {
+  /**
+   * Edita el pedido y oculta la confirmación.
+   */
+  editarPedido(): void {
     this.mostrarConfirmacion = false;
   }
 
-  calcularCostoTotal() {
+  /**
+   * Calcula el costo total del pedido sumando los subtotales de las pizzas.
+   */
+  calcularCostoTotal(): void {
     let total = 0;
     for (const pizza of this.detallePedido) {
       total += pizza.subtotal;
