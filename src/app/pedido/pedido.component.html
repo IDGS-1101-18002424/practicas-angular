@@ -24,20 +24,23 @@
             <div class="form-group">
                 <label>Tamaño:</label>
                 <select class="form-control" [(ngModel)]="tamanio">
-                    <option value="Chica">Chica</option>
-                    <option value="Mediana">Mediana</option>
-                    <option value="Grande">Grande</option>
+                    <option value="Chica">Chica - $40</option>
+                    <option value="Mediana">Mediana - $80</option>
+                    <option value="Grande">Grande - $120</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group text-center">
                 <label>Ingredientes:</label>
-                <div *ngFor="let ingrediente of ingredientesDisponibles">
-                    <label>
-                        <input type="checkbox" [(ngModel)]="ingrediente.seleccionado">
-                        {{ ingrediente.nombre }}
-                    </label>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div *ngFor="let ingrediente of ingredientesDisponibles" class="col-md-6">
+                        <label class="d-block">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="ingrediente.seleccionado">
+                            {{ ingrediente.nombre }}
+                        </label>
+                    </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label>Número de pizzas:</label>
                 <input type="number" class="form-control" [(ngModel)]="numeroPizzas">
@@ -71,9 +74,12 @@
             <hr>
             <br>
             <button class="btn btn-success" (click)="finalizarPedido()">Finalizar pedido</button>
+            <br>
+            <br>
             <div *ngIf="mostrarConfirmacion">
-                <p>El costo total del pedido es: {{ costoTotal }}</p>
+                <p>El costo total del pedido es: ${{ costoTotal }}</p>
                 <label>¿Estás de acuerdo?</label>
+                <br>
                 <button class="btn btn-primary" (click)="aceptarPedido()">Sí</button>
                 <button class="btn btn-danger" (click)="editarPedido()">No</button>
             </div>

@@ -37,10 +37,15 @@ export class PedidoComponent {
     { nombre: 'Champiñones', seleccionado: false },
     { nombre: 'Pepperoni', seleccionado: false },
     { nombre: 'Salami', seleccionado: false },
+    { nombre: 'Salchichas', seleccionado: false },
+    { nombre: 'Chorizo', seleccionado: false },
+    { nombre: 'Tocino', seleccionado: false },
+    { nombre: 'Pollo a la parrilla', seleccionado: false },
+    { nombre: 'Tomates cherry', seleccionado: false },
 
   ];
   pedidoEnviado: boolean = false;
-
+  
 
   /**
    * Agrega una pizza al detalle del pedido.
@@ -60,6 +65,7 @@ export class PedidoComponent {
     // Crea un objeto pizza con los datos del pedido
     const pizza = {
       nombreCompleto: this.nombreCompleto,
+      dirCliente: this.direccion,
       tamanio: this.tamanio,
       ingredientes: ingredientesSeleccionados.join(', '),
       numeroPizzas: this.numeroPizzas,
