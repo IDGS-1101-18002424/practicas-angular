@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>Ticket de Cine</h1>
+
+    <form action="" [formGroup]="cineForm" (ngSubmit)="obtenerDatos()">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Ingrese su nombre">
+            <div *ngIf="cineForm.get('nombre')?.invalid && cineForm.get('nombre')?.touched" class="text-danger">
+                Nombre es requerido (mínimo 3 caracteres)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="numPersonas">Número de Personas:</label>
+            <input type="number" class="form-control" id="numPersonas" formControlName="numPersonas" placeholder="Ingrese el número de personas">
+            <div *ngIf="cineForm.get('numPersonas')?.invalid && cineForm.get('numPersonas')?.touched" class="text-danger">
+                Número de personas es requerido (mínimo 1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="numBoletos">Número de Boletos:</label>
+            <input type="number" class="form-control" id="numBoletos" formControlName="numBoletos" placeholder="Ingrese el número de boletos">
+            <div *ngIf="cineForm.get('numBoletos')?.invalid && cineForm.get('numBoletos')?.touched" class="text-danger">
+                Número de boletos es requerido (mínimo 1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tarjeta">¿Tiene tarjeta de descuento?</label>
+            <select class="form-control" id="tarjeta" formControlName="tarjeta">
+                <option *ngFor="let opcion of opciones" [value]="opcion">{{ opcion }}</option>
+            </select>
+            <div *ngIf="cineForm.get('tarjeta')?.invalid && cineForm.get('tarjeta')?.touched" class="text-danger">
+                Tarjeta es requerida
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Obtener Datos</button>
+    </form>
+
+    <div *ngIf="mostrar1" class="alert alert-danger mt-4">
+        {{ aviso }}
+    </div>
+
+    <div *ngIf="mostrar2" class="alert alert-success mt-4">
+        <p>Total: ${{ total }}</p>
+        <p>Disfrute de su película, {{ nombre }}!</p>
+    </div>
+
+    <div *ngIf="mostrar3" class="alert alert-info mt-4">
+        <p>Descuento adicional del 10% por tener tarjeta de descuento.</p>
+    </div>
+</div>
